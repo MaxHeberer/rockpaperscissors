@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<body>
+<script>
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    let timesToPlay = 5;
+        let validRound = 1;
+
+
+    function computerPlay() {
+        var rpsNumber = Math.floor(Math.random() * 3);
+        if (rpsNumber==0) {return "Rock";}
+        else if (rpsNumber==1) {return "Paper";}
+        else {return "Scissors";}
+    };
+    
+    function playGame(validRound) {
+        let timesPlayed = 0;
+        do {
+            let playerSelection = prompt("Welcome to the battlefield, young Padavan! Choose your weapon out of rock, paper and scissors");
+            playerSelection = playerSelection.toLowerCase();
+            let computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
+            
+        if (validRound==0) {
+            timesPlayed = timesPlayed;
+        }else {timesPlayed = ++timesPlayed;  
+            }
+
+        let timesLeftToPlay = timesToPlay - timesPlayed;
+        
+        alert("Your current score is " + scorePlayer + " to " + scoreComputer + " . You have " + timesLeftToPlay + " rounds left to go");
+        
+        } while (timesPlayed < timesToPlay);
+
+        if (scoreComputer < scorePlayer) {alert("Nice, you beat the bloody beast " + scorePlayer + " to " + scoreComputer + "!");
+        }else if (scoreComputer == scorePlayer) {alert("Final score is " + scorePlayer + " to " + scoreComputer + ". The grander scheme of things thus seems to suggest that computers and humans perform pretty much alike!")
+        }else {alert("Damn, you got beaten by a machine " + scoreComputer + " to " + scorePlayer + "!")};
+
+        scoreComputer = 0;
+        scorePlayer = 0;
+    }
+
+    function playRound(playerSelection, computerSelection) {
+             if (playerSelection=="rock" && computerSelection=="Rock") {alert("You tie, two rocks just smash each other"); 
+        } else if (playerSelection=="rock" && computerSelection=="Paper") {alert("You lose, paper wraps around rock"); 
+            scoreComputer = ++scoreComputer;
+        } else if (playerSelection=="rock" && computerSelection=="Scissors") {alert("You win, your rock smashes scissors"); 
+            scorePlayer = ++scorePlayer;
+        } else if (playerSelection=="paper" && computerSelection=="Rock") {alert("You win, your paper wraps around the rock"); 
+            scorePlayer = ++scorePlayer;
+        } else if (playerSelection=="paper" && computerSelection=="Paper") {alert("You tie, both papers just harmoniously dance together");
+        } else if (playerSelection=="paper" && computerSelection=="Scissors") {alert("You lose, your paper gets painfully cut by scissors"); 
+            scoreComputer = ++scoreComputer;
+        } else if (playerSelection=="scissors" && computerSelection=="Rock") {alert("You lose, your scissors get smashed by a rock"); 
+            scoreComputer = ++scoreComputer;
+        } else if (playerSelection=="scissors" && computerSelection=="Paper") {alert("You win, this weak paper doesn't stand a chance against your sharp scissors"); 
+            scorePlayer = ++scorePlayer;
+        } else if (playerSelection=="scissors" && computerSelection=="Scissors") {alert("You tie, you both just have fun scissoring");
+        }else {alert("Your choice of weapons is unacceptable, choose again more wisely");
+        }
+     
+        return scoreComputer;
+        return scorePlayer;
+    }
+    
+</script>
+</body>
